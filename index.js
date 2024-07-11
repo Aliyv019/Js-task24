@@ -8,9 +8,23 @@ console.log(myarr);
 add_btn.addEventListener('click',()=>{
     const ListItem=document.createElement('li')
     ListItem.innerHTML=`<p>${input.value}</p>
-                <button>Delete</button>`
+                <div>
+                <button>Edit</button>
+                <button>Delete</button>
+                </div>`
     list.appendChild(ListItem)
-    const delete_btn=ListItem.querySelector('button')
+    const edit_btn=ListItem.querySelectorAll('button')[0]
+    const delete_btn=ListItem.querySelectorAll('button')[1]
+    edit_btn.addEventListener('click',()=>{
+        const new_todo=prompt("enter new todo:")
+        myarr.forEach((item, index) => {
+            if (item == ListItem.querySelector('p').textContent) {
+                myarr[index]=new_todo
+                ListItem.querySelector('p').textContent=new_todo
+                localStorage.setItem('todos', JSON.stringify(myarr));
+            }
+        });
+    })
     myarr.push(input.value)
     delete_btn.addEventListener('click',()=>{
         ListItem.remove();
@@ -29,11 +43,25 @@ list.innerHTML = "";
 myarr.forEach((element) => {
     console.log(element);
     const ListItem = document.createElement('li');
-    ListItem.innerHTML = `<p>${element}</p>
-                          <button>Delete</button>`;
+    ListItem.innerHTML = `<p>${input.value}</p>
+                <div>
+                <button>Edit</button>
+                <button>Delete</button>
+                </div>`;
     list.appendChild(ListItem);
-    
-    const delete_btn = ListItem.querySelector('button');
+    const edit_btn=ListItem.querySelectorAll('button')[0]
+    const delete_btn = ListItem.querySelectorAll('button')[1]
+    edit_btn.addEventListener('click',()=>{
+        const new_todo=prompt("enter new todo:")
+        myarr.forEach((item, index) => {
+            if (item == ListItem.querySelector('p').textContent) {
+                myarr[index] = new_todo;
+                ListItem.querySelector('p').textContent = new_todo;
+                localStorage.setItem('todos', JSON.stringify(myarr));
+            }
+        });
+        localStorage.setItem('todos', JSON.stringify(myarr));
+    })
     delete_btn.addEventListener('click', () => {
         ListItem.remove();
         myarr.forEach((item, index) => {
@@ -44,3 +72,4 @@ myarr.forEach((element) => {
         localStorage.setItem('todos', JSON.stringify(myarr));
     });
 });
+
