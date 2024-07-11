@@ -43,7 +43,7 @@ list.innerHTML = "";
 myarr.forEach((element) => {
     console.log(element);
     const ListItem = document.createElement('li');
-    ListItem.innerHTML = `<p>${input.value}</p>
+    ListItem.innerHTML = `<p>${element}</p>
                 <div>
                 <button>Edit</button>
                 <button>Delete</button>
