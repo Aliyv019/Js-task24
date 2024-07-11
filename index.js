@@ -15,7 +15,7 @@ add_btn.addEventListener('click',()=>{
     delete_btn.addEventListener('click',()=>{
         ListItem.remove();
         myarr.forEach((element,index)=>{
-            if(element.todo==ListItem.querySelector('p').textContent){
+            if(element==ListItem.querySelector('p').textContent){
                 myarr.splice(index,1)
             }
         })
